@@ -1,9 +1,17 @@
 import { useState } from "react";
 
-// import { MouseEvent } from "react";
+//TypeScript feature called Interface
+//using an interface we can define the shape of our object
+//{items: [], heading: string}
+interface ListProps {
+  items: string []
+  heading: string
+  onSelectItem:(item:string) => void
+}
 
-const ListGroup = () => {
-  let items = ["New York", "San Francisco", "Tokyo", "London", "Paris"];
+
+const ListGroup = ({items,heading,onSelectItem}:ListProps) => {
+ 
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
@@ -22,7 +30,7 @@ const ListGroup = () => {
   return (
     //JSX we must have one parent element example div fragment or empty Fragment <></>
     <>
-      <h1>List</h1>
+      <h1>{heading}</h1>
       {items.length == 0 && <p>NO item found</p>}
       <ul className="list-group">
         {items.map((item, index) => (
@@ -34,8 +42,10 @@ const ListGroup = () => {
             }
             onClick={()=>{
               setSelectedIndex(index)
+              onSelectItem(item)
             }}
             key={index}
+            
           >
             {item}
           </li>
