@@ -1,4 +1,5 @@
 import Alert from "./components/Alert";
+import Button from "./components/Button";
 import ListGroup from "./components/ListGroup";
 import MyuseStateExample from "./components/MyuseStateExample";
 
@@ -18,10 +19,18 @@ function App() {
     console.log(item);
   };
 
+  const handleClick = () => {
+    console.log("I was clicked")
+  }
+
   return (
     <>
       <div>
         <Alert>45</Alert>
+       <Button onClickFunction={handleClick}> One Button</Button>
+       <Button color="primary" onClickFunction={handleClick}> two Button</Button>
+       <Button color="warning" onClickFunction={handleClick}> Three Button</Button>
+       <Button color="info" onClickFunction={handleClick}> Four Button</Button>
         <ListGroup
           items={items}
           heading="Cities"
