@@ -1,3 +1,4 @@
+import styles from './Button.module.css';
 
 interface ButtonProps {
     children: string;
@@ -8,7 +9,7 @@ interface ButtonProps {
 const Button = ({children,onClickFunction,color="primary"}:ButtonProps) => {
   return (
     <>
-      <button className={"btn btn-" + color} onClick={onClickFunction} style={{margin:"20px"}}>{children}</button>
+      <button className={[styles.btn,styles['btn-' + color]].join(" ")} onClick={onClickFunction} style={{margin:"20px"}}>{children}</button>
     </>
   );
 };

@@ -1,4 +1,6 @@
 import { useState } from "react";
+import styles from './ListGroup.module.css'
+
 
 //TypeScript feature called Interface
 //using an interface we can define the shape of our object
@@ -16,10 +18,10 @@ const ListGroup = ({items,heading,onSelectItem}:ListProps) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   //counter
-  const [counter, setCounter] = useState(1);
+  // const [counter, setCounter] = useState(1);
 
   //name
-  const [name, setName] = useState("Jose");
+  // const [name, setName] = useState("Jose");
 
   // const arr = useState(0);
   // console.log(arr)
@@ -32,13 +34,13 @@ const ListGroup = ({items,heading,onSelectItem}:ListProps) => {
     <>
       <h1>{heading}</h1>
       {items.length == 0 && <p>NO item found</p>}
-      <ul className="list-group">
+      <ul className={[styles.ListGroup,styles.container].join(' ')}>
         {items.map((item, index) => (
           <li
             className={
               selectedIndex == index
-                ? "list-group-item active"
-                : "list-group-item"
+                ? styles['listGroupItem']
+                : styles['listGroupItem']
             }
             onClick={()=>{
               setSelectedIndex(index)
